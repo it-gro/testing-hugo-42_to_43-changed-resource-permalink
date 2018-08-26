@@ -23,3 +23,11 @@ versus
 <pre>
 HUGO_CANONIFYURLS=true hugo server -w -v
 </pre>
+
+## Running the test...
+
+* layouts/partials/resource.image.1.html
+
+=>
+
+

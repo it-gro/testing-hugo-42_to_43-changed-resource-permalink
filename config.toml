@@ -1,4 +1,5 @@
-baseURL = "http://example.org/foo/bar"
+#baseURL = "http://example.org/foo/bar"
+baseURL = "http://example.org/"
 title = "Testing Permalink Issue 0.43 => 0.44"
 disableHugoGeneratorInject=true
 disableKinds = ["RSS", "sitemap", "taxonomy", "taxonomyTerm"]
