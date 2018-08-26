@@ -18,7 +18,7 @@ To run this test we need in PATH
 
 `HUGO_CANONIFYURLS=true hugo-0.42.2 server -w -v`
 
-#### issue with
+#### issue starting with 
 
 `HUGO_CANONIFYURLS=true hugo-0.43.0 server -w -v`
 
@@ -33,11 +33,12 @@ All resources are in or below subdir
 
 =>
 
+```
 diff -r public/0.42.2/root public/0.43.0/root
 diff -r public/0.43.0/root public/0.47.1/root
-
 diff -r public/0.42.2/subdir public/0.43.0/subdir
 diff -r public/0.43.0/subdir public/0.47.1/subdir
+```
 
 
 Outputs:
