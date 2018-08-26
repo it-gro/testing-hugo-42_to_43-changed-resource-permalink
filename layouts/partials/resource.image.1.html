@@ -21,9 +21,12 @@ myResource.RelPermalink | relURL  : {{ $myResource.RelPermalink | relURL }} <br/
 
 {{- .Scratch.Set `myImage` ($myResource.Resize `300x`)}}
 {{- $myImage := .Scratch.Get `myImage` }}
+
+<p>
+<b>Using src=' .Permalink  '</b><br/>
 <img
   src='{{ $myImage.Permalink  }}'
-  alt='{{ $myImage.RelPermalink }}'
+  alt='alt:{{ $myImage.RelPermalink }}'
                        data-dbg-Site.BaseURL='{{.Site.BaseURL                   }}'
                    data-dbg-myBaseUrlSubDirs='{{$myBaseUrlSubDirs               }}'
                data-dbg-myResource-Permalink='{{$myResource.Permalink           }}'
@@ -41,14 +44,16 @@ myResource.RelPermalink | relURL  : {{ $myResource.RelPermalink | relURL }} <br/
 */}}
   >
 
-  {{- if not (findRE (printf "^/%s" $myBaseUrlSubDirs) $myImage.RelPermalink) }}
-   {{- .Scratch.Set `myImagePermalinkWorkaround` (replaceRE `^/` `` $myImage.RelPermalink ) }}
-  {{- end }}
-  {{- $myImagePermalinkWorkaround := (.Scratch.Get `myImagePermalinkWorkaround`) | default $myImage.RelPermalink }}
+{{- if not (findRE (printf "^/%s" $myBaseUrlSubDirs) $myImage.RelPermalink) }}
+ {{- .Scratch.Set `myImagePermalinkWorkaround` (replaceRE `^/` `` $myImage.RelPermalink ) }}
+{{- end }}
+{{- $myImagePermalinkWorkaround := (.Scratch.Get `myImagePermalinkWorkaround`) | default $myImage.RelPermalink }}
 
+<p>
+<b>Using workaround</b><br/>
 <img
   src='{{ $myImagePermalinkWorkaround | absURL  }}'
-  alt='{{ $myImage.RelPermalink }}'
+  alt='alt:{{ $myImage.RelPermalink }}'
                        data-dbg-Site.BaseURL='{{.Site.BaseURL                  }}'
                    data-dbg-myBaseUrlSubDirs='{{$myBaseUrlSubDirs              }}'
          data-dbg-myImagePermalinkWorkaround='{{$myImagePermalinkWorkaround    }}'
