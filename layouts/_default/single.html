@@ -1,0 +1,23 @@
+{{ partial "header.html" . }}
+	<main>
+  single.html
+		<article>
+			<h1>{{ .Title }}</h1>
+			<div>
+				{{ .Content }}
+			</div>
+      .Site.BaseURL          : {{ .Site.BaseURL }} <br/>
+
+			<h2>Image from resource </h2>
+      {{ partial "resource.image.1.html" . }}
+
+
+			<h2>Just curious about this Page... </h2>
+      .Permalink             : {{ .Permalink    }} <br/>
+      .RelPermalink          : {{ .RelPermalink }} <br/>
+      .RelPermalink | relURL : {{ .RelPermalink | relURL }} <br/>
+      .RelPermalink | absURL : {{ .RelPermalink | absURL }} <br/>
+
+    </article>
+	</main>
+{{ partial "footer.html" . }}

@@ -1,0 +1,65 @@
+{{- $myResPage := .Site.GetPage "page" "resources/images/index.md" }}
+{{/*
+{{- printf `%+v
+T:%T
+#v:%#v  <br/>
+` $myResPage $myResPage $myResPage }}
+*/}}
+
+
+{{- .Scratch.Set `myResImg` ( ($myResPage.Resources.ByType `image`).GetMatch (`**/pixabay.com/adventure*`) ) }}
+{{- $myResource := .Scratch.Get `myResImg` }}
+<br/>
+myResource.Permalink              : {{ $myResource.Permalink             }} <br/>
+{{/*
+myResource.RelPermalink           : {{ $myResource.RelPermalink          }} <br/>
+myResource.RelPermalink | absURL  : {{ $myResource.RelPermalink | absURL }} <br/>
+myResource.RelPermalink | relURL  : {{ $myResource.RelPermalink | relURL }} <br/>
+*/}}
+
+{{- $myBaseUrlSubDirs := replaceRE `^(http(s)?)?://(.*?)/` `` .Site.BaseURL }}
+
+{{- .Scratch.Set `myImage` ($myResource.Resize `300x`)}}
+{{- $myImage := .Scratch.Get `myImage` }}
+<img
+  src='{{ $myImage.Permalink  }}'
+  alt='{{ $myImage.RelPermalink }}'
+                       data-dbg-Site.BaseURL='{{.Site.BaseURL                   }}'
+                   data-dbg-myBaseUrlSubDirs='{{$myBaseUrlSubDirs               }}'
+               data-dbg-myResource-Permalink='{{$myResource.Permalink           }}'
+                  data-dbg-myImage-Permalink='{{$myImage.Permalink              }}'
+               data-dbg-myImage-RelPermalink='{{$myImage.RelPermalink           }}'
+        data-dbg-myImage-RelPermalink-absURL='{{$myImage.RelPermalink  | absURL }}'
+        data-dbg-myImage-RelPermalink-relURL='{{$myImage.RelPermalink  | relURL }}'
+{{/*
+                data-dbg-myResPage-Permalink='{{$myResPage.Permalink            }}'
+             data-dbg-myResPage-RelPermalink='{{$myResPage.RelPermalink         }}'
+            data-dbg-myResource-RelPermalink='{{$myResource.RelPermalink        }}'
+               data-dbg-myImage-RelPermalink='{{$myImage.RelPermalink           }}'
+        data-dbg-myImage-RelPermalink-absURL='{{$myImage.RelPermalink  | absURL }}'
+        data-dbg-myImage-RelPermalink-relURL='{{$myImage.RelPermalink  | relURL }}'
+*/}}
+  >
+
+  {{- if not (findRE (printf "^/%s" $myBaseUrlSubDirs) $myImage.RelPermalink) }}
+   {{- .Scratch.Set `myImagePermalinkWorkaround` (replaceRE `^/` `` $myImage.RelPermalink ) }}
+  {{- end }}
+  {{- $myImagePermalinkWorkaround := (.Scratch.Get `myImagePermalinkWorkaround`) | default $myImage.RelPermalink }}
+
+<img
+  src='{{ $myImagePermalinkWorkaround | absURL  }}'
+  alt='{{ $myImage.RelPermalink }}'
+                       data-dbg-Site.BaseURL='{{.Site.BaseURL                  }}'
+                   data-dbg-myBaseUrlSubDirs='{{$myBaseUrlSubDirs              }}'
+         data-dbg-myImagePermalinkWorkaround='{{$myImagePermalinkWorkaround    }}'
+  data-dbg-myImagePermalinkWorkaround-absURL='{{$myImagePermalinkWorkaround  | absURL }}'
+{{/*
+                data-dbg-myResPage-Permalink='{{$myResPage.Permalink            }}'
+             data-dbg-myResPage-RelPermalink='{{$myResPage.RelPermalink         }}'
+            data-dbg-myResource-RelPermalink='{{$myResource.RelPermalink        }}'
+                  data-dbg-myImage-Permalink='{{$myImage.Permalink              }}'
+               data-dbg-myImage-RelPermalink='{{$myImage.RelPermalink           }}'
+        data-dbg-myImage-RelPermalink-absURL='{{$myImage.RelPermalink  | absURL }}'
+        data-dbg-myImage-RelPermalink-relURL='{{$myImage.RelPermalink  | relURL }}'
+*/}}
+  >

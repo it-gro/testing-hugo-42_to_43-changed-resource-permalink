@@ -1,0 +1,14 @@
+{{ partial "header.html" . }}
+	<main>
+  list.html
+		<h1>{{ .Title }}</h1>
+		<div>
+			{{ .Content }}
+		</div>
+	</main>
+
+  {{- range $index, $element := .Data.Pages.ByWeight }}
+    <a href={{ .RelPermalink }}>{{ .RelPermalink }}</a>
+    <a href={{ .Permalink }}   >{{ .Permalink }}</a>
+  {{- end }}
+{{ partial "footer.html" . }}

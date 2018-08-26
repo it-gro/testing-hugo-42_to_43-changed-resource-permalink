@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>This is a Test</title>
+</head>
+<body>
+	<header>
+	</header>
+
+	<main>
+  single.html
+		<article>
+			<h1>This is a Test</h1>
+			<div>
+				
+
+<h1 id="test">Test</h1>
+
+<p>Given
+<pre>
+baseURL = &ldquo;<a href="http://example.org/foo/bar&quot;">http://example.org/foo/bar&quot;</a>
+</pre></p>
+
+<pre>
+myResource.Permalink 
+changes from http://localhost:1313/foo/bar/resources/images/...
+to http://localhost:1313/resources/images/...
+when HUGO_CANONIFYURLS=true is used
+</pre>
+
+<pre>
+hugo server -w -v
+</pre>
+versus
+<pre>
+HUGO_CANONIFYURLS=true hugo server -w -v
+</pre>
+
+			</div>
+      .Site.BaseURL          : https://example.com/foo/bar/ <br/>
+
+			<h2>Image from resource </h2>
+      
+
+<br/>
+myResource.Permalink              : https://example.com/foo/bar/resources/images/teaserpics/pixabay.com/adventure-2528477_640.jpg <br/>
+
+<img
+  src='https://example.com/foo/bar/resources/images/teaserpics/pixabay.com/adventure-2528477_640_hu30e96e65c77ee702b7193f618ab3b541_100786_300x0_resize_q75_box.jpg'
+  alt='/resources/images/teaserpics/pixabay.com/adventure-2528477_640_hu30e96e65c77ee702b7193f618ab3b541_100786_300x0_resize_q75_box.jpg'
+                       data-dbg-Site.BaseURL='https://example.com/foo/bar/'
+                   data-dbg-myBaseUrlSubDirs='foo/bar/'
+               data-dbg-myResource-Permalink='https://example.com/foo/bar/resources/images/teaserpics/pixabay.com/adventure-2528477_640.jpg'
+                  data-dbg-myImage-Permalink='https://example.com/foo/bar/resources/images/teaserpics/pixabay.com/adventure-2528477_640_hu30e96e65c77ee702b7193f618ab3b541_100786_300x0_resize_q75_box.jpg'
+               data-dbg-myImage-RelPermalink='/resources/images/teaserpics/pixabay.com/adventure-2528477_640_hu30e96e65c77ee702b7193f618ab3b541_100786_300x0_resize_q75_box.jpg'
+        data-dbg-myImage-RelPermalink-absURL='https://example.com/resources/images/teaserpics/pixabay.com/adventure-2528477_640_hu30e96e65c77ee702b7193f618ab3b541_100786_300x0_resize_q75_box.jpg'
+        data-dbg-myImage-RelPermalink-relURL='/resources/images/teaserpics/pixabay.com/adventure-2528477_640_hu30e96e65c77ee702b7193f618ab3b541_100786_300x0_resize_q75_box.jpg'
+
+  >
+
+<img
+  src='https://example.com/foo/bar/resources/images/teaserpics/pixabay.com/adventure-2528477_640_hu30e96e65c77ee702b7193f618ab3b541_100786_300x0_resize_q75_box.jpg'
+  alt='/resources/images/teaserpics/pixabay.com/adventure-2528477_640_hu30e96e65c77ee702b7193f618ab3b541_100786_300x0_resize_q75_box.jpg'
+                       data-dbg-Site.BaseURL='https://example.com/foo/bar/'
+                   data-dbg-myBaseUrlSubDirs='foo/bar/'
+         data-dbg-myImagePermalinkWorkaround='resources/images/teaserpics/pixabay.com/adventure-2528477_640_hu30e96e65c77ee702b7193f618ab3b541_100786_300x0_resize_q75_box.jpg'
+  data-dbg-myImagePermalinkWorkaround-absURL='https://example.com/foo/bar/resources/images/teaserpics/pixabay.com/adventure-2528477_640_hu30e96e65c77ee702b7193f618ab3b541_100786_300x0_resize_q75_box.jpg'
+
+  >
+
+
+
+			<h2>Just curious about this Page... </h2>
+      .Permalink             : https://example.com/foo/bar/1/2/test/ <br/>
+      .RelPermalink          : /1/2/test/ <br/>
+      .RelPermalink | relURL : /1/2/test/ <br/>
+      .RelPermalink | absURL : https://example.com/1/2/test/ <br/>
+
+    </article>
+	</main>
+	<footer>
+	</footer>
+</body>
+</html>
+
